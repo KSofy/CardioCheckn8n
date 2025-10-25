@@ -24,14 +24,14 @@ El flujo:
 <img width="1119" height="858" alt="Captura de pantalla 2025-10-24 193430" src="https://github.com/user-attachments/assets/edcab51c-96a5-41f9-a560-ae008fe10286" />
 <img width="1844" height="818" alt="Captura de pantalla 2025-10-24 193503" src="https://github.com/user-attachments/assets/d7e9b7b0-cf95-4aa7-bc9a-38cab03157c5" />
 ![Imagen de WhatsApp 2025-10-24 a las 19 36 21_0104584b](https://github.com/user-attachments/assets/1548610e-12d3-4124-95a1-dacafb8b84e3)
-
-
+![alerta](https://github.com/user-attachments/assets/e3690ea2-b5df-46c4-b92f-5a654e85dee9)
 
 ## 🎥 Video de la Fase 1
-
+Video de Sofia
+https://youtu.be/mGvw6HAH9KE
 
 ## 📄 Propuesta del Proyecto
-La propuesta original está disponible en la carpeta `/propuesta`.
+https://drive.google.com/file/d/12uhGbfld2qjqSHXQIIgwppWGOD-eyN0d/view?usp=drivesdk
 
 ## 🔄 Flujo de n8n
 El archivo `flujo-cardio-check.json` se encuentra en la carpeta `/n8n-flows`.
