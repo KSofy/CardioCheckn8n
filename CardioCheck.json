@@ -1,0 +1,390 @@
+{
+  "name": "CardioCheck",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6b819410-23ab-4ee0-8e4b-2bdb3f2ab28a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -656,
+        0
+      ],
+      "id": "9f7bc985-17e6-4099-91f9-99742a118892",
+      "name": "x-signature",
+      "webhookId": "6b819410-23ab-4ee0-8e4b-2bdb3f2ab28a"
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "=Reporte de Salud\nFecha: {{new Date().toLocaleString()}}\nMedición: {{ $json.Sistolica}}/{{ $json.Diastolica }} mmHg\nPulso:{{ $json.Pulso }} \nbpm",
+        "name": "=Reporte -  {{new \nDate().toISOString()}}.txt",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1oXzS7gKaTMNoGHgP0dKdbPP7Gvm9Bxuu",
+          "mode": "list",
+          "cachedResultName": "CardioCheckn8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1oXzS7gKaTMNoGHgP0dKdbPP7Gvm9Bxuu"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -352,
+        0
+      ],
+      "id": "bc5b2b1f-3c4c-41cb-92ee-b5de11042453",
+      "name": "Create file from text",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "4syopk8mm1vzXUxL",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "kmelgarm2@miumg.edu.gt",
+          "mode": "list",
+          "cachedResultName": "kmelgarm2@miumg.edu.gt"
+        },
+        "start": "={{DateTime.now().plus({days:1}).toISO() }}",
+        "end": "={{DateTime.now().plus({days:1, minutes:15}).toISO() }}",
+        "useDefaultReminders": "={{ true }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -208,
+        0
+      ],
+      "id": "25be8a61-7ff0-4c03-935d-8d7e079cfeec",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "pemQK3qUK2NMt6ug",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d3a1aacf-3928-4522-9090-9a0b4f4b6f61",
+              "leftValue": "={{ $('Append row in sheet').item.json.Sistolica }}",
+              "rightValue": 130,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "1e806f8f-925d-4168-8b70-ab8396768dce",
+              "leftValue": "={{ $('Append row in sheet').item.json.Diastolica }}",
+              "rightValue": 85,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": "=",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -48,
+        0
+      ],
+      "id": "b3b68299-475c-4b64-b4bb-3f39443067e3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1kB2M-mNlk16w9xkt1bIWSJdLuabKGRkCYsnEcalk9D8",
+          "mode": "list",
+          "cachedResultName": "Historial de Presion-CardioCheck",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kB2M-mNlk16w9xkt1bIWSJdLuabKGRkCYsnEcalk9D8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kB2M-mNlk16w9xkt1bIWSJdLuabKGRkCYsnEcalk9D8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Diastolica": "={{ $json[\"body\"][\"diastolic\"] }}",
+            "Pulso": "={{ $json[\"body\"][\"pulse\"] }}",
+            "Email del Usuario": "={{ $json[\"body\"][\"userEmail\"] }}",
+            "Fecha": "={{ $now }}",
+            "Sistolica": "={{ $json.body.systolic }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sistolica",
+              "displayName": "Sistolica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Diastolica",
+              "displayName": "Diastolica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pulso",
+              "displayName": "Pulso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email del Usuario",
+              "displayName": "Email del Usuario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -512,
+        0
+      ],
+      "id": "b910e2ba-0207-4533-b828-7c4680c60615",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "MbZqZ4V5LuUMx2cz",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('x-signature').item.json.body.emergencyContact }}",
+        "subject": "=ALERTA DE SALUD URGENTE!",
+        "message": "=Este es un mensaje de alerta automático de la app Cardiocheck. \n\nEl usuario({{ $('Append row in sheet').item.json['Email del Usuario'] }}) ha registrado una medición de presión arterial críticamente alta: {{ $('Append row in sheet').item.json.Sistolica }}/{{ $('Append row in sheet').item.json.Diastolica }} mmHg\n\nPor favor ponte en contacto con esta persona de inmediato para asegurar que se encuentra bien.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        144,
+        -32
+      ],
+      "id": "1cdc4ba8-f7ce-448c-8cfa-ede21f36f936",
+      "name": "Send a message",
+      "webhookId": "66656a50-7561-414e-95db-c8d8de373136",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "mapWLULNhNDK2wJF",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3fbd733b-2e77-4674-9ba1-6a82985c3bc9",
+              "leftValue": "=\n{{ $('Append row in sheet').item.json['Email del Usuario'] }}",
+              "rightValue": "=true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        144,
+        96
+      ],
+      "id": "f41486b5-7b24-4dd3-852c-8ec76d93fc71",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('x-signature').item.json.body.userEmail }}",
+        "subject": "Tu medición en CardioCheck se ha guardado",
+        "message": "=Hola,<br><br> Tu nueva medición de presión arterial ha sido registrada:<br> <strong>{{ $('Append row in sheet').item.json.Sistolica }}/{{ $('Append row in sheet').item.json.Diastolica }} mmHg</strong><br> Pulso:{{ $('Append row in sheet').item.json.Pulso }} bpm<br><br> Gracias por usar CardioCheck. Tu constancia es clave para tu salud ❤️",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        336,
+        80
+      ],
+      "id": "fd2c5bb3-0e6d-4e05-b40f-a6bd6d49d06a",
+      "name": "Send a message1",
+      "webhookId": "581f7010-2381-40e2-9613-89f53be679d8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "mapWLULNhNDK2wJF",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "x-signature": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create file from text": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Create file from text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "a21dee8b-250f-4bd5-86db-f158195c96ba",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5d62bd2aa9c2e78152f496dab915b898a3303b9e3df8bf530c69a407d4235737"
+  },
+  "id": "3vaFQc1uWkhs4cR4",
+  "tags": []
+}
