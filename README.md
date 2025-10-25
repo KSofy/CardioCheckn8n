@@ -30,11 +30,7 @@ El flujo:
 Video de Sofia
 https://youtu.be/mGvw6HAH9KE
 
-## 📄 Propuesta del Proyecto
+## 📄 Propuesta del Proyecto Original
 https://drive.google.com/file/d/12uhGbfld2qjqSHXQIIgwppWGOD-eyN0d/view?usp=drivesdk
 
-## 🔄 Flujo de n8n
-El archivo `flujo-cardio-check.json` se encuentra en la carpeta `/n8n-flows`.
 
-## 📅 Fecha de Entrega
-25 de noviembre de 2025
