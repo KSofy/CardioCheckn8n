@@ -1,0 +1,55 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.example.cardiocheck'
+    compileSdkVersion 34
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    defaultConfig {
+        applicationId 'com.example.cardiocheck'
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName '1.0'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        // Fallback de clave de OpenAI desde local.properties
+        def props = new Properties()
+        def lp = rootProject.file('local.properties')
+        if (lp.exists()) {
+            props.load(new FileInputStream(lp))
+        }
+        def openaiKey = props.getProperty('OPENAI_API_KEY', '')
+        buildConfigField 'String', 'OPENAI_API_KEY', '"' + openaiKey.replace('"','\\"') + '"'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}

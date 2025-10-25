@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_generate_pdf"
+        android:title="Generar PDF"
+        android:icon="@drawable/ic_send"
+        android:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/action_ai_advice"
+        android:title="Pedir consejo IA"
+        android:showAsAction="never"/>
+    <item
+        android:id="@+id/action_return_main_menu"
+        android:title="Regresar al menú principal"
+        android:showAsAction="never"/>
+</menu>

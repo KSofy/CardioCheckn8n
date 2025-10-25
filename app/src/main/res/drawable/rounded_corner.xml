@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Este color es solo un placeholder, será sobrescrito por el
+         app:backgroundTint o setBackgroundColor que usamos en el código -->
+    <solid android:color="@android:color/darker_gray" />
+
+    <!-- Esta es la parte importante: define el radio de las esquinas -->
+    <corners android:radius="8dp" />
+
+</shape>
+    

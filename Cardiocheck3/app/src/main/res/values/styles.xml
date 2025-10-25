@@ -1,0 +1,13 @@
+<resources>
+    <style name="Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardBackgroundColor">@color/card_bg</item>
+    </style>
+
+    <style name="RoundedButton">
+        <item name="android:background">@drawable/btn_rounded</item>
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:height">@dimen/btn_height</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

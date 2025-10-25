@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?> <resources> <!-- Colores de fondo modo oscuro --> <color name="bg_soft">#121212</color> <color name="bg_light_gray">#1E1E1E</color><!-- Colores primarios modo oscuro -->
+    <color name="primary_blue">#4FC3F7</color>
+    <color name="primary_dark">#29B6F6</color>
+    <color name="accent_teal">#26C6DA</color>
+
+    <!-- Estados de presión arterial (mantener colores médicos) (CORREGIDO) -->
+    <color name="bp_optimal">#4CAF50</color>     <!-- Verde más vibrante -->
+    <color name="bp_normal">#FFEB3B</color>      <!-- Amarillo más vibrante (No usado por clasificador) -->
+    <color name="bp_elevated">#FFC107</color>     <!-- AÑADIDO: Ámbar vibrante -->
+    <color name="bp_stage1">#FF9800</color>      <!-- Naranja más vibrante -->
+    <color name="bp_stage2">#F44336</color>      <!-- Rojo más vibrante -->
+    <color name="bp_crisis">#B71C1C</color>       <!-- AÑADIDO: Rojo oscuro vibrante -->
+    <color name="bp_low">#AB47BC</color>         <!-- Púrpura más vibrante -->
+
+    <!-- Colores de texto modo oscuro -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0BEC5</color>
+    <color name="text_muted">#78909C</color>
+    <color name="text_white">#FFFFFF</color>
+
+    <!-- Colores de tarjetas modo oscuro -->
+    <color name="card_bg">#1E1E1E</color>
+    <color name="card_shadow">#00000000</color>
+    <color name="divider">#37474F</color>
+
+    <!-- Colores adicionales -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+
+    <!-- Colores específicos -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

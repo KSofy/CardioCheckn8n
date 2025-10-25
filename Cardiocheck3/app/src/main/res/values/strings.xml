@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Cardio Check</string>
+
+    <string name="welcome_title">Cardio Check</string>
+    <string name="welcome_subtitle">Tu salud cardiovascular, al alcance de tu mano.</string>
+    <string name="welcome_hint">Tu primera medición empieza aquí.</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_register">Registrarse</string>
+
+    <string name="login_title">Iniciar sesión</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Contraseña</string>
+    <string name="label_openai_key">Clave de OpenAI</string>
+    <string name="hint_email">tu@correo.com</string>
+    <string name="hint_password">Mínimo 8 caracteres</string>
+    <string name="hint_openai">sk-…</string>
+    <string name="action_login">Entrar</string>
+    <string name="action_go_register">Crear una cuenta</string>
+
+    <string name="register_title">Registrarse</string>
+    <string name="label_full_name">Nombre completo</string>
+    <string name="action_register">Registrar</string>
+
+    <string name="dashboard_title">Panel</string>
+    <string name="section_today_analysis">Análisis de hoy</string>
+    <string name="btn_ai_assistant">Asistente de IA</string>
+    <string name="btn_history">Ver historial</string>
+    <string name="btn_generate_pdf">Generar PDF</string>
+    <string name="fab_new_measure">Registrar nueva medición</string>
+
+    <string name="form_systolic">Sistólica (mmHg)</string>
+    <string name="form_diastolic">Diastólica (mmHg)</string>
+    <string name="form_pulse">Pulso (bpm)</string>
+    <string name="action_save">Registrar</string>
+
+    <string name="history_title">Historial</string>
+    <string name="ai_chat_title">Asistente de IA</string>
+    <string name="hint_write_message">Escribe tu pregunta…</string>
+    <string name="send">Enviar</string>
+
+    <string name="msg_saved">✔️ Guardado</string>
+    <string name="msg_invalid_email">Email inválido</string>
+    <string name="msg_invalid_password">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="msg_required_fields">Completa todos los campos</string>
+    <string name="msg_invalid_ranges">Revisa los rangos: Sistólica 70–250, Diastólica 40–130, Pulso 40–200</string>
+    <string name="msg_login_failed">Credenciales incorrectas</string>
+    <string name="msg_need_api_key">Ingresa tu clave de OpenAI para usar la IA</string>
+    <string name="msg_no_email_app">No se encontró una app de correo. Instala Gmail o cualquier cliente de email.</string>
+    <string name="msg_pdf_generated">PDF generado</string>
+
+    <string name="pdf_header">Cardio Check – Historial de Presión Arterial</string>
+    <string name="btn_logout">Cerrar sesión</string>
+</resources>

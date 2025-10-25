@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="btn_height">48dp</dimen>
+    <dimen name="btn_corner">24dp</dimen>
+    <dimen name="logo_text_size">32sp</dimen>
+</resources>
+

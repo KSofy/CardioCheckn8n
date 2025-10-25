@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- SECCIÓN 1: Formulario de entrada (se oculta después de guardar) -->
+    <LinearLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nueva Medición"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSystolic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sistólica (SYS)"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDiastolic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Diastólica (DIA)"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPulse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pulso (BPM)"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSaveReading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Guardar Medición" />
+    </LinearLayout>
+
+    <!-- SECCIÓN 2: Resumen y botón de análisis (se muestra después de guardar) -->
+    <LinearLayout
+        android:id="@+id/summaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resumen de la Medición"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvResultValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="120/80 mmHg"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvResultPulse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="75 bpm"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tvClassification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btnAnalyzeNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Obtener Consejo IA" />
+
+        <Button
+            android:id="@+id/btnCloseDialog"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar" />
+
+    </LinearLayout>
+
+    <!-- ============================================================= -->
+    <!-- === NUEVA SECCIÓN: Muestra el resultado del análisis de IA === -->
+    <!-- ============================================================= -->
+    <LinearLayout
+        android:id="@+id/analysisResultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consejo de Cardio-IA"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Este TextView mostrará la respuesta de la IA -->
+        <TextView
+            android:id="@+id/tvAIResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@drawable/rounded_background_light"
+            android:text="Aquí aparecerá el consejo personalizado..."
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:minHeight="100dp" />
+
+        <!-- Botón para cerrar el diálogo después de leer el consejo -->
+        <Button
+            android:id="@+id/btnFinishDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Finalizar" />
+    </LinearLayout>
+
+</LinearLayout>
