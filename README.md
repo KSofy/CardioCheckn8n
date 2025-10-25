@@ -32,6 +32,7 @@ https://youtu.be/mGvw6HAH9KE
 
 ## Json Del Flujo
 - Se encuentra en CardioCheckjson.
+  
 ## 📄 Propuesta del Proyecto Original
 https://drive.google.com/file/d/12uhGbfld2qjqSHXQIIgwppWGOD-eyN0d/view?usp=drivesdk
 >>>>>>> 27b855516167043da12a2354833df2b349a55dbd
